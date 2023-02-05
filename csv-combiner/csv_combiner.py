@@ -4,7 +4,7 @@ import argparse
 
 
 def combineCSVFiles(files):
-    spamwriter = csv.writer(sys.stdout)
+    spamwriter = csv.writer(sys.stdout, lineterminator='\n')
     spamwriter.writerow(getHeading(files[0]))
     for file in files:
         with open(file, 'r') as f:
