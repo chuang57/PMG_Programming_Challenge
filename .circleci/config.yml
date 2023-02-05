@@ -11,7 +11,7 @@ jobs:
           command: |
             pip install pytest
             cd csv-combiner
-            pytest --junitxml=test-results/junit.xml test_csv_combiner.py
+            python test_csv_combiner.py
       - store_test_results:
           path: test-results
 workflows:
