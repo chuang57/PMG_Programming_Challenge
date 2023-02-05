@@ -33,7 +33,7 @@ class TestCSVCombiner(unittest.TestCase):
         """negative test to test if non-csv files are passed as args"""
         result = subprocess.run(
             ['python3', 'csv_combiner.py', 'random_file.py', 'other_file.js'], stdout=subprocess.PIPE)
-        expected_output = b'Must be csv files'
+        expected_output = b'random_file.py must be a csv file'
         self.assertEqual(result.stdout.strip(),
                          expected_output, "Did not error out")
 
