@@ -45,7 +45,7 @@ if __name__ == "__main__":
         for file in files:
             index = file.rfind(".")
             if file[index:] != ".csv":
-                raise Exception("Must be csv files")
+                raise Exception(file + " must be a csv file")
         combineCSVFiles(files)
     except Exception as e:
         print(e)
