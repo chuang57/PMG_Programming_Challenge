@@ -2,8 +2,9 @@ import csv
 import sys
 import argparse
 
-#function to combine csv files and output the combination to stdout
+
 def combineCSVFiles(files):
+    """Function to combine csv files and output the combination to stdout."""
     spamwriter = csv.writer(sys.stdout, lineterminator='\n')
     spamwriter.writerow(getHeading(files[0]))
     for file in files:
@@ -17,8 +18,8 @@ def combineCSVFiles(files):
                     spamwriter.writerow(row)
 
 
-#function to get the heading row of a csv file
 def getHeading(file):
+    """Function to get the heading row of a csv file."""
     with open(file, 'r') as f:
         reader = csv.reader(f)
         heading = next(reader)
@@ -26,8 +27,8 @@ def getHeading(file):
     return heading
 
 
-#function to get the base name of a path
 def getBaseName(file):
+    """Function to get the base name of a path."""
     index = file.rfind("/")
     base_name = file[index+1:]
     return base_name
