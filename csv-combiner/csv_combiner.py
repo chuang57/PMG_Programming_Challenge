@@ -2,7 +2,7 @@ import csv
 import sys
 import argparse
 
-
+#function to combine csv files and output the combination to stdout
 def combineCSVFiles(files):
     spamwriter = csv.writer(sys.stdout, lineterminator='\n')
     spamwriter.writerow(getHeading(files[0]))
@@ -17,6 +17,7 @@ def combineCSVFiles(files):
                     spamwriter.writerow(row)
 
 
+#function to get the heading row of a csv file
 def getHeading(file):
     with open(file, 'r') as f:
         reader = csv.reader(f)
@@ -25,6 +26,7 @@ def getHeading(file):
     return heading
 
 
+#function to get the base name of a path
 def getBaseName(file):
     index = file.rfind("/")
     base_name = file[index+1:]
@@ -32,9 +34,8 @@ def getBaseName(file):
 
 
 if __name__ == "__main__":
-    # parser = argparse.ArgumentParser(prog = 'Combiner', description = 'Combines CSV files')
-    # all command-line args present are gathered into a list. Additionally, an error message will be generated if there wasn’t at least one command-line argument present.
     try:
+        # all command-line args present are gathered into a list.
         parser = argparse.ArgumentParser()
         parser.add_argument('files', nargs='*', type=str)
         args = parser.parse_args()

@@ -4,10 +4,11 @@ import subprocess
 
 class TestCSVCombiner(unittest.TestCase):
     """class to test csv_combiner.py"""
-    
+
     def test_one_files(self):
         """test one csv files passed as args"""
-        result = subprocess.run(['python3', 'csv_combiner.py', './test-fixtures/accessories.csv'], stdout=subprocess.PIPE, universal_newlines='\n')
+        result = subprocess.run(['python3', 'csv_combiner.py', './test-fixtures/accessories.csv'],
+                                stdout=subprocess.PIPE, universal_newlines='\n')
         expected_output = 'email_hash,category,filename\nb9f6f22276c919da793da65c76345ebb0b072257d12402107d09c89bc369a6b6,Wallets,accessories.csv\nc2b5fa9e09ef2464a2b9ed7e351a5e1499823083c057913c6995fdf4335c73e7,Purses,accessories.csv\nfaaee0ff7d06b05313ecb75d46a9aed014b11023ca1af5ec21a0607848071d18,Watches,accessories.csv\n5cd72da5035f2b36b604a16efc639cd04b6cfae7e487dcba60db88d3ef870f1e,Wallets,accessories.csv'
         self.assertEqual(result.stdout.strip(), expected_output,
                          "CSV files not combined correctly")
